@@ -3,38 +3,213 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Criação de E-mail Institucional</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Processo de Criação de E-mail Institucional</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        <!-- Chosen Palette: Sky -->
+        <!-- Application Structure Plan: The application is structured as a user-friendly, single-page guide. It starts with a clear header and a brief description. The core of the application is an interactive flowchart that visualizes the complex email creation process. This makes it much easier to understand than a list of text. Users can click on each step for details. Key rules and rejection reasons are presented in highly visible, distinct sections using cards, which draws attention to critical information. Finally, performance metrics are displayed as clear KPIs. This structure guides the user from the general overview to the process specifics and important rules in a logical, engaging manner. -->
+        <!-- Visualization & Content Choices:
+            - Process Flowchart (HTML/CSS): The "Atividades Realizadas" section is a multi-step process with conditional logic. Representing this as an interactive flowchart (using HTML, Tailwind CSS, and JS for the interactions) is the most effective way to communicate the workflow. Users click a step to expand it, making the process feel manageable and easy to follow.
+            - Rule Cards (HTML/CSS): The "Regras" are critical pieces of information. Presenting them in card format with icons makes them stand out and easier to remember than a simple bulleted list.
+            - Rejection Reason Alerts (HTML/CSS): Similarly, the "Justificativas para não execução" are presented as distinct alert-style boxes to clearly separate them from the main process and highlight potential reasons for a request being denied.
+            - KPI Display (HTML/CSS): The "Métricas de Desempenho" are presented as clean, easy-to-scan Key Performance Indicator cards, which is a standard and effective way to display key metrics in a dashboard-style format.
+            - CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f9ff; /* sky-50 */
+        }
+        .step-content {
+            transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+            max-height: 0;
+            opacity: 0;
+            transform: translateY(-10px);
+            overflow: hidden;
+        }
+        .step.active .step-content {
+            max-height: 500px; /* Adjust as needed */
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .step-connector {
+            width: 2px;
+            background-color: #e0f2fe; /* sky-200 */
+        }
+        .decision-point {
+            border-style: dashed;
+        }
+    </style>
 </head>
-<body>
-    <header>
-        <h1>Criação de E-mail Institucional</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Início</a></li>
-                <li><a href="criacao-email.html">Criação de E-mail Institucional</a></li>
-                <li><a href="atualizacao-site.html">Atualização do Site da SG-TIC</a></li>
-            </ul>
-        </nav>
-    </header>
+<body class="bg-sky-50 text-slate-800">
 
-    <main>
-        <section>
-            <h2>Processo de Criação</h2>
-            <p>Aqui são apresentadas informações detalhadas sobre como solicitar e criar um e-mail institucional.</p>
-            <ul>
-                <li>Passo 1: Envio da solicitação.</li>
-                <li>Passo 2: Análise da solicitação.</li>
-                <li>Passo 3: Ativação do e-mail.</li>
-            </ul>
-            <p>Entre em contato com o suporte para mais informações.</p>
-        </section>
-    </main>
+    <div class="container mx-auto p-4 md:p-8">
 
-    <footer>
-        <p>&copy; 2025 Meu Site. Todos os direitos reservados.</p>
-    </footer>
+        <!-- Header -->
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-bold text-sky-900 mb-2">Processo de Criação de E-mail Institucional</h1>
+            <p class="text-lg text-slate-600">Um guia interativo para entender o fluxo de solicitação e criação de contas de e-mail.</p>
+        </header>
 
-    <script src="js/script.js"></script>
+        <!-- Main Content -->
+        <main class="space-y-16">
+
+            <!-- Description Section -->
+            <section id="description" class="max-w-4xl mx-auto text-center">
+                <h2 class="text-3xl font-bold text-sky-800 mb-4">O Que é Este Serviço?</h2>
+                <p class="text-slate-600 leading-relaxed">
+                    Este serviço consiste no provisionamento de contas de e-mail institucionais para usuários autorizados, incluindo a geração de credenciais de acesso e a notificação de informações necessárias para o primeiro uso. O objetivo é disponibilizar um meio de comunicação eletrônica oficial e seguro para a comunidade institucional.
+                </p>
+            </section>
+            
+            <!-- Interactive Process Flow Section -->
+            <section id="process">
+                <h2 class="text-3xl font-bold text-center text-sky-800 mb-8">Modelo de Processo: Criação de Conta de E-mail</h2>
+                <div class="max-w-2xl mx-auto">
+                    <div class="space-y-4">
+                        <!-- Step 1 -->
+                        <div class="step bg-white p-4 rounded-lg shadow-sm border border-slate-200 cursor-pointer" onclick="toggleStep(this)">
+                            <div class="flex justify-between items-center">
+                                <div class="flex items-center">
+                                    <div class="flex-shrink-0 bg-sky-500 text-white rounded-full h-8 w-8 flex items-center justify-center font-bold">1</div>
+                                    <h3 class="ml-4 font-semibold text-lg text-slate-700">Recebimento da Solicitação</h3>
+                                </div>
+                                <span class="text-sky-500 transform transition-transform">▼</span>
+                            </div>
+                            <div class="step-content pt-4 mt-4 border-t border-slate-200">
+                                <p class="text-slate-600">A solicitação de criação de e-mail é recebida através dos canais oficiais.</p>
+                            </div>
+                        </div>
+
+                        <!-- Step 2 -->
+                        <div class="flex justify-center">
+                            <div class="step-connector h-8"></div>
+                        </div>
+                        <div class="step bg-white p-4 rounded-lg shadow-sm border border-slate-200 cursor-pointer" onclick="toggleStep(this)">
+                            <div class="flex justify-between items-center">
+                                <div class="flex items-center">
+                                    <div class="flex-shrink-0 bg-sky-500 text-white rounded-full h-8 w-8 flex items-center justify-center font-bold">2</div>
+                                    <h3 class="ml-4 font-semibold text-lg text-slate-700">Validação da Requisição</h3>
+                                </div>
+                                <span class="text-sky-500 transform transition-transform">▼</span>
+                            </div>
+                            <div class="step-content pt-4 mt-4 border-t border-slate-200 space-y-3">
+                                <p><strong>Verificações realizadas:</strong></p>
+                                <ul class="list-disc list-inside text-slate-600 space-y-2">
+                                    <li>É verificado se o domínio solicitado tem administrador próprio. Caso o domínio tenha administrador próprio, o e-mail do responsável é informado ao solicitante.</li>
+                                    <li>É verificado se a conta do requisitante pertence ao mesmo domínio da conta a ser criada. Caso o domínio seja diferente, o requisitante é informado que um novo chamado deve ser aberto de acordo com as regras.</li>
+                                    <li>A solicitação deve ser feita pela chefia imediata do usuário, e por isso, a informação é averiguada. Caso seja averiguado que o requisitante não é chefia imediata do usuário, é informado ao requisitante que um novo chamado deve ser aberto pela chefia imediata do usuário ou RH responsável.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Step 3 -->
+                        <div class="flex justify-center">
+                            <div class="step-connector h-8"></div>
+                        </div>
+                        <div class="step bg-white p-4 rounded-lg shadow-sm border border-slate-200 cursor-pointer" onclick="toggleStep(this)">
+                            <div class="flex justify-between items-center">
+                                <div class="flex items-center">
+                                    <div class="flex-shrink-0 bg-sky-500 text-white rounded-full h-8 w-8 flex items-center justify-center font-bold">3</div>
+                                    <h3 class="ml-4 font-semibold text-lg text-slate-700">Validação do Usuário</h3>
+                                </div>
+                                <span class="text-sky-500 transform transition-transform">▼</span>
+                            </div>
+                            <div class="step-content pt-4 mt-4 border-t border-slate-200 space-y-3">
+                                <p class="text-slate-600">Sendo uma requisição válida, os dados do usuário final são solicitados, incluindo o CPF. A equipe então verifica se o usuário já possui uma conta institucional no domínio solicitado.</p>
+                                <div class="p-3 bg-amber-50 border-l-4 border-amber-400 text-amber-800">
+                                    <p><strong>Ponto de Decisão:</strong> Se o usuário já possuir um e-mail, o chamado é encerrado e o requisitante é informado.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Step 4 -->
+                        <div class="flex justify-center">
+                            <div class="step-connector h-8"></div>
+                        </div>
+                        <div class="step bg-white p-4 rounded-lg shadow-sm border border-slate-200 cursor-pointer" onclick="toggleStep(this)">
+                             <div class="flex justify-between items-center">
+                                <div class="flex items-center">
+                                    <div class="flex-shrink-0 bg-sky-500 text-white rounded-full h-8 w-8 flex items-center justify-center font-bold">4</div>
+                                    <h3 class="ml-4 font-semibold text-lg text-slate-700">Criação e Configuração</h3>
+                                </div>
+                                <span class="text-sky-500 transform transition-transform">▼</span>
+                            </div>
+                            <div class="step-content pt-4 mt-4 border-t border-slate-200 space-y-3">
+                                <p class="text-slate-600">Se o usuário não tiver uma conta, o e-mail é criado. O CPF é salvo no campo "User/Employee ID" para evitar duplicidades futuras. A conta é então adicionada às listas de e-mail necessárias e uma senha temporária é gerada.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Step 5 -->
+                        <div class="flex justify-center">
+                             <div class="step-connector h-8"></div>
+                        </div>
+                        <div class="step bg-white p-4 rounded-lg shadow-sm border border-slate-200 cursor-pointer" onclick="toggleStep(this)">
+                             <div class="flex justify-between items-center">
+                                <div class="flex items-center">
+                                    <div class="flex-shrink-0 bg-sky-500 text-white rounded-full h-8 w-8 flex items-center justify-center font-bold">5</div>
+                                    <h3 class="ml-4 font-semibold text-lg text-slate-700">Comunicação e Encerramento</h3>
+                                </div>
+                                <span class="text-sky-500 transform transition-transform">▼</span>
+                            </div>
+                            <div class="step-content pt-4 mt-4 border-t border-slate-200 space-y-3">
+                                <p class="text-slate-600">As credenciais criadas (e-mail e senha temporária) são enviadas ao requisitante, com orientação para a troca imediata da senha. Uma pesquisa de satisfação é enviada e, finalmente, o chamado é encerrado.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Rules and Rejection Section -->
+            <section id="rules">
+                <div class="grid lg:grid-cols-2 gap-8">
+                    <!-- Rules -->
+                    <div class="bg-white p-6 rounded-lg shadow-md border border-slate-200">
+                        <h3 class="text-2xl font-bold text-sky-800 mb-4">Regras Obrigatórias</h3>
+                        <ul class="space-y-4">
+                            <li class="flex items-start"><span class="mr-3 text-xl"> </span><p>O requisitante deve ter uma conta de e-mail institucional do mesmo domínio solicitado para o novo usuário.</p></li>
+                            <li class="flex items-start"><span class="mr-3 text-xl"> </span><p>É obrigatório fornecer o CPF do usuário ANTES da criação da conta para verificação de duplicidade.</p></li>
+                            <li class="flex items-start"><span class="mr-3 text-xl"> </span><p>O solicitante deve justificar a necessidade da criação da conta de e-mail.</p></li>
+                        </ul>
+                    </div>
+                    <!-- Rejection Reasons -->
+                    <div class="bg-rose-50 border-l-4 border-rose-500 p-6 rounded-lg">
+                         <h3 class="text-2xl font-bold text-rose-800 mb-4">Principais Motivos de Não Execução</h3>
+                         <ul class="space-y-3 text-rose-900">
+                            <li><span class="font-semibold">Domínio com Admin Próprio:</span> A solicitação é direcionada ao administrador responsável.</li>
+                            <li><span class="font-semibold">Requisitante de Domínio Diferente:</span> A solicitação não pode ser atendida conforme a regra.</li>
+                            <li><span class="font-semibold">Requisitante não Autorizado:</span> O pedido deve ser feito pela chefia imediata ou RH.</li>
+                            <li><span class="font-semibold">Usuário Já Possui Conta:</span> Não é possível criar contas duplicadas para o mesmo usuário no domínio.</li>
+                         </ul>
+                    </div>
+                </div>
+            </section>
+            
+        </main>
+        
+        <!-- Footer -->
+        <footer class="text-center mt-16 pt-8 border-t border-slate-200">
+             <p class="text-slate-500 text-sm">&copy; 2024 - Documentação de Serviços de TI</p>
+        </footer>
+
+    </div>
+
+    <script>
+        function toggleStep(element) {
+            const wasActive = element.classList.contains('active');
+            
+            // Close all steps
+            document.querySelectorAll('.step').forEach(step => {
+                step.classList.remove('active');
+                step.querySelector('.transform').classList.remove('rotate-180');
+            });
+            
+            // If the clicked one wasn't active, open it
+            if (!wasActive) {
+                element.classList.add('active');
+                element.querySelector('.transform').classList.add('rotate-180');
+            }
+        }
+    </script>
 </body>
 </html>
